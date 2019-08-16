@@ -44,9 +44,9 @@ if {[catch {
     cd [file dirname $argv0]/..
     set argv0PWD [pwd]
     if {$envPWD ne $argv0PWD} {
-	##puts "WARNING:"
-	##puts "The application path ([file dirname $argv0]) is different from the \"ANNOTSV\" environment variable ($env(ANNOTSV)/bin)."
-	##puts "Check your \"ANNOTSV\" environment variable. Exit with error"; exit 2
+	puts "WARNING:"
+	puts "The application path ([file dirname $argv0]) is different from the \"ANNOTSV\" environment variable ($env(ANNOTSV)/bin)."
+	puts "Check your \"ANNOTSV\" environment variable. Exit with error"; exit 2
     }
     cd $actualPWD
 

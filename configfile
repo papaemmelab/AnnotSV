@@ -1,0 +1,55 @@
+# This file is used to simplify the configuration of AnnotSV.
+# Anything behind a hashtag is considered as a comment
+# Please, feel free to change the AnnotSV options.
+
+#------------------
+# AnnotSV Options :
+#------------------
+
+
+# puts below the path of the bedtools executable
+-bedtools:		""
+-genomeBuild:           GRCh37
+
+-overlap:               70
+
+-promoterSize:		500
+
+-SVinputInfo:           1
+
+-SVminSize:		50
+
+-vcfPASS:               0
+
+
+
+#----------------------------------------------------------------
+# SV type configuration is requiered to access to the SV ranking:
+#----------------------------------------------------------------
+## class 1 = benign
+## class 2 = likely benign
+## class 3 = VOUS (variant of unknown significance)
+## class 4 = likely pathogenic
+## class 5 = pathogenic
+#
+# To classify SV into 1 of 5 classes according to the ACMG guidelines, 
+# AnnotSV needs to retrieve the SV type (duplication, deletion, ...) in the input SV file (BED or VCF)
+
+## From a VCF SV input file:
+############################
+# To access to the SV ranking from a VCF input file, the INFO keys used for structural variants should follow the VCF Version 4.2 Specification:
+# - The "SVTYPE" values should be one of DEL, INS, DUP, INV, CNV, BND
+# - The <CN0>, <CN2>, <CN3>... angle-bracketed ID from the "ALT" column should be used in case of SVTYPE=CNV in the INFO column
+#  
+## From a BED SV input file:
+############################
+# To access to the SV ranking from a BED input file, the column number with the SV type information should be indicated:
+-svtBEDcol:	-1 
+# (for example, if the SV type column is the 4th column, then user should set -svtBEDcol to 4)
+# The "SVTYPE" values should be one of the following:
+# Deletion: DEL, deletion or <CN0>
+# Insertion: INS or insertion
+# Duplication: DUP, duplication, <CN2>, <CN3>...
+# Inversion: INV or inversion
+# Breakend record: BND, breakpoint, breakend
+
