@@ -29,8 +29,7 @@ proc checkRefGeneFile {} {
 
     ## Check if the refGene file has been downloaded then formatted
     ##############################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/RefGene/$g_AnnotSV(genomeBuild)" refgeneDir
-
+	set refgeneDir "$g_AnnotSV(annotationfolder)/RefGene/$g_AnnotSV(genomeBuild)"
     set refgeneFileDownloaded "[glob -nocomplain $refgeneDir/refGene.txt.gz]"
     set refgeneFileFormatted "[glob -nocomplain $refgeneDir/refGene.sorted.bed]"
 
@@ -46,7 +45,7 @@ proc checkRefGeneFile {} {
 
 	## Delete promoters files (need to be updated after the creation of new refGene file)
 	##################################################################################### 
-	regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/FtIncludedInSV/Promoter/$g_AnnotSV(genomeBuild)" promoterDir
+	set promoterDir "$g_AnnotSV(annotationfolder)/FtIncludedInSV/Promoter/$g_AnnotSV(genomeBuild)"
 	foreach promFile [glob -nocomplain "$promoterDir/promoter.*bp.sorted.bed"] {
 	    file delete -force $promFile
 	}

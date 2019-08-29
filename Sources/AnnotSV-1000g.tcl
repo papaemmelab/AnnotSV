@@ -30,8 +30,8 @@ proc check1000gFile {} {
     
     ## Check if 1000g file has been downloaded then formatted
     #########################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/SVincludedInFt/1000g/$g_AnnotSV(genomeBuild)" 1000gDir
-    set 1000gFileDownloaded [glob -nocomplain "$1000gDir/ALL.wgs.mergedSV*.vcf.gz"]
+    set 1000gDir "$g_AnnotSV(annotationfolder)/SVincludedInFt/1000g/$g_AnnotSV(genomeBuild)"
+	set 1000gFileDownloaded [glob -nocomplain "$1000gDir/ALL.wgs.mergedSV*.vcf.gz"]
     set 1000gFileFormattedAndSorted  [glob -nocomplain "$1000gDir/*_1000g_SV.sorted.bed"]
 
     if {$1000gFileDownloaded eq "" && $1000gFileFormattedAndSorted eq ""} {
@@ -149,8 +149,8 @@ proc 1000gAnnotation {SVchrom SVstart SVend} {
     # headerOutput "1000g_event 1000g_AF 1000g_max_AF"
     set 1000gText(Empty) "\t-1\t-1"
     
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/SVincludedInFt/1000g/$g_AnnotSV(genomeBuild)" 1000gDir
-    set 1000gBEDfile [glob -nocomplain "$1000gDir/*_1000g_SV.sorted.bed"]
+    set 1000gDir "$g_AnnotSV(annotationfolder)/SVincludedInFt/1000g/$g_AnnotSV(genomeBuild)"
+	set 1000gBEDfile [glob -nocomplain "$1000gDir/*_1000g_SV.sorted.bed"]
     
     if {![info exists 1000gText(DONE)]} {
 	

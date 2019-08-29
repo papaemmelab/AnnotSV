@@ -35,7 +35,7 @@ proc checkFASTAfiles {} {
 
     ## Check if the FASTA file has been downloaded then formatted
     ############################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/BreakpointsAnnotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)/BreakpointsAnnotations"
     set FASTAfileDownloaded [glob -nocomplain "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/*chromFa.tar.gz"]  
     set FASTAfileFormatted [glob -nocomplain "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/$g_AnnotSV(genomeBuild)_chromFa.fasta"] 
 
@@ -65,7 +65,7 @@ proc updateFASTAfiles {} {
 	return
     }
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/BreakpointsAnnotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)/BreakpointsAnnotations"
     set FASTAfileDownloaded [glob -nocomplain "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/*chromFa.tar.gz"]  
     set FASTAfileFormatted "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/$g_AnnotSV(genomeBuild)_chromFa.fasta"
     set ChromSizesFile "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/$g_AnnotSV(genomeBuild)_chromFa.chromSizes"
@@ -128,7 +128,7 @@ proc GCcontentAnnotation {BreakpointChrom BreakpointPos} {
     set g_GCcontent(Empty) "" ; # Ok, no "\t" because we return only one value for each procedure call
 
     # Checking with the size of the chrom is needed
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/BreakpointsAnnotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)/BreakpointsAnnotations"
     set ChromSizesFile "$extannDir/GCcontent/$g_AnnotSV(genomeBuild)/$g_AnnotSV(genomeBuild)_chromFa.chromSizes"
     foreach L [LinesFromFile $ChromSizesFile] {
 	set sizeOf([lindex $L 0]) [lindex $L 1]

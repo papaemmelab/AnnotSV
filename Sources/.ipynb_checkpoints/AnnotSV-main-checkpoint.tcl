@@ -187,7 +187,7 @@ if {[catch {
     checkUsersBED
 
     # Users Genes-based annotation files (from $ANNOTSV/Annotations/*/)
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based" extannDir
+    set extannDir "$g_AnnotSV(annotationfolder)/Genes-based"
     foreach annotFile [glob -nocomplain $extannDir/*/*.tsv] {
 	if {[regexp "_DGV_samplesInStudies.tsv$" $annotFile]} {continue}
 	lappend g_AnnotSV(extann) $annotFile
@@ -195,7 +195,7 @@ if {[catch {
     foreach annotFile [glob -nocomplain $extannDir/*/*.tsv.gz] {
 	lappend g_AnnotSV(extann) $annotFile
     }
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Users/" userDir
+    set userDir "$g_AnnotSV(annotationfolder)/Users"
     foreach annotFile [glob -nocomplain $userDir/*.tsv] {
 	lappend g_AnnotSV(extann) $annotFile
     }

@@ -34,7 +34,7 @@ proc checkDGVfiles {} {
 
     ## Check if the 2 DGV files have been downloaded then formatted
     ##############################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set DGVfile1Downloaded [glob -nocomplain "$extannDir/SVincludedInFt/DGV/$g_AnnotSV(genomeBuild)/DGV.GS.*.gff3"]   
     set DGVfile2Downloaded [glob -nocomplain "$extannDir/SVincludedInFt/DGV/$g_AnnotSV(genomeBuild)/*_supportingvariants_*.txt"]   
     set DGVfile1Formatted [glob -nocomplain "$extannDir/SVincludedInFt/DGV/$g_AnnotSV(genomeBuild)/*_DGV.GS*_annotations.sorted.bed"] 
@@ -225,7 +225,7 @@ proc DGVannotation {SVchrom SVstart SVend} {
     # headerOutput "\tDGV_LOSS_IDs\tDGV_LOSS_n_samples_with_SV\tDGV_LOSS_n_samples_tested\tDGV_LOSS_Frequency"
     set dgvText(Empty) "\t0\t0\t-1\t\t0\t0\t-1"
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set DGVfile1Formatted [glob -nocomplain "$extannDir/SVincludedInFt/DGV/$g_AnnotSV(genomeBuild)/*_DGV.GS*_annotations.sorted.bed"]
     set DGVfile2Formatted [glob -nocomplain "$extannDir/SVincludedInFt/DGV/$g_AnnotSV(genomeBuild)/*_DGV_samplesInStudies.tsv"]
     if {$DGVfile1Formatted eq "" || $DGVfile2Formatted eq ""} { 

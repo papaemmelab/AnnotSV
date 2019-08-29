@@ -33,7 +33,7 @@ proc checkIMHfile {} {
 
     ## Check if IMH file has been downloaded then formatted
     #########################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/SVincludedInFt/IMH/$g_AnnotSV(genomeBuild)" IMHdir
+	set IMHdir "$g_AnnotSV(annotationfolder)/SVincludedInFt/IMH/$g_AnnotSV(genomeBuild)"
     set IMHfileDownloaded [glob -nocomplain "$IMHdir/B*.callset.public.bedpe"]
     set IMHfileFormattedAndSorted  [glob -nocomplain "$IMHdir/*_IMH_DUP_SV.sorted.bed"]
 
@@ -140,7 +140,7 @@ proc IMHannotation {SVchrom SVstart SVend SVtype} {
     set SVtype [normalizeSVtype $SVtype]
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/SVincludedInFt/IMH/$g_AnnotSV(genomeBuild)" IMHdir
+	set IMHdir "$g_AnnotSV(annotationfolder)/SVincludedInFt/IMH/$g_AnnotSV(genomeBuild)"
     
     if {![info exists IMHtext(DONE)]} {
 	

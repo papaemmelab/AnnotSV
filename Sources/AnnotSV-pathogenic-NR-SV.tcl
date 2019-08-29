@@ -30,7 +30,7 @@ proc checkPathogenicNRSVfile {} {
 
     ## Check if dbVar files has been formatted (if yes, nothing to be done)
     #######################################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/FtIncludedInSV/dbVar_pathogenic_NR_SV/$g_AnnotSV(genomeBuild)" NRSVdir
+	set NRSVdir "$g_AnnotSV(annotationfolder)/FtIncludedInSV/dbVar_pathogenic_NR_SV/$g_AnnotSV(genomeBuild)"
     set dbVarBedFileFormattedSorted {}
     foreach f [glob -nocomplain "$NRSVdir/*_dbVar_pathogenic_NR_SV.formatted.sorted.bed"] {
 	regsub -nocase ".formatted.sorted.bed$" $f ".header.tsv" newf
@@ -57,8 +57,8 @@ proc checkPathogenicNRSVfile {} {
 
     ## Formatting of the dbVar files
     ################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/FtIncludedInSV/dbVar_pathogenic_NR_SV/$g_AnnotSV(genomeBuild)" dbVarDir
-    set dbVarFileDownloaded1 "$dbVarDir/$g_AnnotSV(genomeBuild).nr_deletions.tsv.gz"
+    set dbVarDir "$g_AnnotSV(annotationfolder)/FtIncludedInSV/dbVar_pathogenic_NR_SV/$g_AnnotSV(genomeBuild)"
+	set dbVarFileDownloaded1 "$dbVarDir/$g_AnnotSV(genomeBuild).nr_deletions.tsv.gz"
     set dbVarFileDownloaded2 "$dbVarDir/$g_AnnotSV(genomeBuild).nr_duplications.tsv.gz"
 
     if {[file exists $dbVarFileDownloaded1] && [file exists $dbVarFileDownloaded2]} {
@@ -165,7 +165,7 @@ proc pathogenicNRSVannotation {SVchrom SVstart SVend} {
     set pathogenicNRSVtext(Empty) "\t\t"
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set pathogenicNRSVfileFormatted [glob -nocomplain "$extannDir/FtIncludedInSV/dbVar_pathogenic_NR_SV/$g_AnnotSV(genomeBuild)/*_dbVar_pathogenic_NR_SV.formatted.sorted.bed"] 
     
     if {![info exists pathogenicNRSVtext(DONE)]} {

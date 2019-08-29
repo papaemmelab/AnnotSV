@@ -109,7 +109,7 @@ proc EnhancerInformation {Ls SVtype SVtoAnn} {
 	set rankingPreparation 1
 
 	# List of the morbid genes:
-	regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/OMIM" omimDir
+    set omimDir "$g_AnnotSV(annotationfolder)/Genes-based/OMIM"
 	set MorbidGenesFileFormattedGzip [glob -nocomplain "$omimDir/*_morbidGenes.tsv.gz"]
 	set L_MorbidGenes {}
 	if {[file exists $MorbidGenesFileFormattedGzip]} {
@@ -119,7 +119,7 @@ proc EnhancerInformation {Ls SVtype SVtoAnn} {
 	}
 	# L_DEL: List of genes with a pLI > 0.9 or with HI_CGscore of 3 or 2
 	# L_DUP: List of genes with a TriS_CGscore of 3 or 2
-	regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/ExAC" ExACdir
+    set ExACdir "$g_AnnotSV(annotationfolder)/Genes-based/ExAC"
 	set ExACfile [glob -nocomplain "$ExACdir/*_GeneIntolerance.pLI-Zscore.annotations.tsv.gz"]
 	set L_DEL {}
 	if {[file exists $ExACfile]} {
@@ -131,7 +131,7 @@ proc EnhancerInformation {Ls SVtype SVtoAnn} {
 		}
 	    }
 	}
-	regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/ClinGen" ClinGenDir
+    set ClinGenDir "$g_AnnotSV(annotationfolder)/Genes-based/ClinGen"
 	set CGfile [glob -nocomplain "$ClinGenDir/*_ClinGenAnnotations.tsv.gz"]
 	set L_DUP {}
 	if {[file exists $CGfile]} {

@@ -74,11 +74,12 @@ proc configureAnnotSV {argv} {
     set g_AnnotSV(vcfFiles)                 ""
     set g_AnnotSV(vcfPASS)                  "0"
     set g_AnnotSV(vcfSamples)               ""
+    set g_AnnotSV(annotationfolder)         ""
     
     
     ## Load config file options
     ###########################
-    set lOptionsOk "bedtools candidateGenesFile candidateGenesFiltering extann filteredVCFfiles filteredVCFsamples genomeBuild metrics minTotalNumber outputDir outputFile overlap overwrite promoterSize rankFiltering reciprocal SVinputFile SVinputInfo SVminSize svtBEDcol txFile typeOfAnnotation vcfFiles vcfSamples vcfPASS"
+    set lOptionsOk "bedtools candidateGenesFile candidateGenesFiltering extann filteredVCFfiles filteredVCFsamples genomeBuild metrics minTotalNumber outputDir outputFile overlap overwrite promoterSize rankFiltering reciprocal SVinputFile SVinputInfo SVminSize svtBEDcol txFile typeOfAnnotation vcfFiles vcfSamples vcfPASS annotationfolder"
     regsub "/?Sources/?" $g_AnnotSV(sourcesDir) "" dir
     foreach configFile [glob -nocomplain $dir/configfile] {
 	puts "\t...configuration data from $configFile"

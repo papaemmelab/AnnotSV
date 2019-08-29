@@ -28,8 +28,7 @@ proc checkClinGenFile {} {
     global g_AnnotSV
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/ClinGen" clingenDir
- 
+	set clingenDir "$g_AnnotSV(annotationfolder)/Genes-based/ClinGen"
     ## Check if the ClinGen file has been downloaded the formatted
     ##############################################################
     set ClinGenFileDownloaded [glob -nocomplain "$clingenDir/ClinGen_gene_curation_list_*.tsv"]

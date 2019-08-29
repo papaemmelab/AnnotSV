@@ -28,7 +28,7 @@ proc checkOMIMfile {} {
     global g_AnnotSV
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/OMIM" omimDir
+	set omimDir "$g_AnnotSV(annotationfolder)/Genes-based/OMIM"
  
     ## Check if the OMIM file has been downloaded the formatted
     ##########################################################
@@ -152,7 +152,7 @@ proc checkMorbidGenesfile {} {
     global g_AnnotSV
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based/OMIM" omimDir
+	set omimDir "$g_AnnotSV(annotationfolder)/Genes-based/OMIM"
  
     ## Check if the MorbidGenes file has been downloaded the formatted
     ##################################################################

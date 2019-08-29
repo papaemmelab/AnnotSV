@@ -34,7 +34,7 @@ proc checkHIfile {} {
 
     ## Check if the HI file has been downloaded then formatted
     #########################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Genes-based" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)/Genes-based"
  
     set HIfileDownloaded [glob -nocomplain "$extannDir/DDD/HI_Predictions_Version3.bed.gz"]
     set HIfileFormattedGzip [glob -nocomplain "$extannDir/DDD/*_HI.tsv.gz"] 

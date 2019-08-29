@@ -33,7 +33,7 @@ proc checkTADfiles {} {
 
     ## Check if TAD files has been downloaded then formatted
     #######################################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set TADfilesDownloaded [glob -nocomplain "$extannDir/FtIncludedInSV/TAD/$g_AnnotSV(genomeBuild)/ENC*.bed"]
     set boundariesTADfileFormatted [glob -nocomplain "$extannDir/FtIncludedInSV/TAD/$g_AnnotSV(genomeBuild)/*_boundariesTAD.sorted.bed"] 
 
@@ -124,7 +124,7 @@ proc TADannotation {SVchrom SVstart SVend} {
     set tadText(Empty) "\t"
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set boundariesTADfileFormatted [glob -nocomplain "$extannDir/FtIncludedInSV/TAD/$g_AnnotSV(genomeBuild)/*_boundariesTAD.sorted.bed"] 
     
     if {![info exists tadText(DONE)]} {

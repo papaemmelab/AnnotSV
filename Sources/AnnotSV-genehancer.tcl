@@ -38,7 +38,7 @@ proc checkGHfiles {} {
 
     ## Check if GH files has been formatted
     #######################################
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set GHdir "$extannDir/FtIncludedInSV/GeneHancer"
     set GHfileFormatted [glob -nocomplain "$GHdir/$g_AnnotSV(genomeBuild)/*_GH_$g_AnnotSV(genomeBuild).sorted.bed"] 
 
@@ -235,7 +235,7 @@ proc GHannotation {SVchrom SVstart SVend} {
     set GHtext(Empty) "\t\t\t\t\t"
 
 
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations" extannDir
+	set extannDir "$g_AnnotSV(annotationfolder)"
     set GHfileFormatted [glob -nocomplain "$extannDir/FtIncludedInSV/GeneHancer/$g_AnnotSV(genomeBuild)/*_GH_$g_AnnotSV(genomeBuild).sorted.bed"] 
     
     if {![info exists GHtext(DONE)]} {

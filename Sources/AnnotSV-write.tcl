@@ -68,7 +68,7 @@ proc OrganizeAnnotation {} {
     if {$g_AnnotSV(DDDfreqAnn)} {puts "\t\t...DDD frequency annotation"}
     if {$g_AnnotSV(1000gAnn)} {puts "\t\t...1000g frequency annotation"}
     if {$g_AnnotSV(IMHann)} {puts "\t\t...Ira M. Hall's lab frequency annotation"}
-    regsub "Sources/?" $g_AnnotSV(sourcesDir) "Annotations/Users/$g_AnnotSV(genomeBuild)" usersDir
+	set usersDir "$g_AnnotSV(annotationfolder)/Users/$g_AnnotSV(genomeBuild)"
     foreach formattedUserBEDfile [glob -nocomplain $usersDir/SVincludedInFt/*.formatted.sorted.bed] {
 	puts "\t\t...[file tail $formattedUserBEDfile]"
 	regsub -nocase ".formatted.sorted.bed$" $formattedUserBEDfile ".header.tsv" userHeaderFile
